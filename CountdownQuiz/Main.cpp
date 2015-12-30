@@ -1,6 +1,7 @@
 ﻿#include <Siv3D.hpp>
 #include "CountdownBar.h"
 #include "CountdownNumber.h"
+#include "HintDrawer.h"
 
 void Main()
 {
@@ -9,6 +10,7 @@ void Main()
 
 	CountdownBar bar(10000);
 	CountdownNumber number(10000);
+	HintDrawer hint(L"てすとてきすと");
 
 	while(System::Update()) {
 		int elapsed = timer.elapsed();
@@ -19,5 +21,6 @@ void Main()
 		number.update(elapsed);
 		bar.draw();
 		number.draw();
+		hint.draw();
 	}
 }
