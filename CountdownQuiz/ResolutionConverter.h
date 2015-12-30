@@ -18,5 +18,6 @@ public:
 	static int toX(double percentageX);
 	static int toY(double percentageY);
 	static Vec2 toVec2(double percentageX, double percentageY);
+	static Vec2 toVec2(Vec2 percentageV);
 };
 }

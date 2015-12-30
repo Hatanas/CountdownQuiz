@@ -1,5 +1,6 @@
 ﻿#include <Siv3D.hpp>
 #include "CountdownBar.h"
+#include "CountdownNumber.h"
 
 void Main()
 {
@@ -7,6 +8,7 @@ void Main()
 	timer.start();
 
 	CountdownBar bar(10000);
+	CountdownNumber number(10000);
 
 	while(System::Update()) {
 		int elapsed = timer.elapsed();
@@ -14,6 +16,8 @@ void Main()
 			timer.pause();
 		}
 		bar.update(elapsed);
+		number.update(elapsed);
 		bar.draw();
+		number.draw();
 	}
 }

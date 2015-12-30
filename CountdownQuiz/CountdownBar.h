@@ -9,16 +9,15 @@
 class CountdownBar
 {
 private:
-	static const int BAR_LENGTH_;
-	static const int BAR_HEIGHT_;
-	static const double HSV_BEGIN_ANGLE_;
-	static const double HSV_END_ANGLE_;
+	static const Vec2 m_POSITION;
+	static const double m_BAR_LENGTH;
+	static const double m_BAR_WIDTH;
+	static const double m_HSV_BEGIN_ANGLE;
+	static const double m_HSV_END_ANGLE;
 private:
-	const int limitTime_ms_;
-	const Font fontOfCountNumber_;
-	int nowBarLength_;
-	int nowLimitTime_s_;
-	double nowHSVAngle_;
+	const uint32 m_limitTime_ms;
+	double m_nowBarLength;
+	double m_nowHSVAngle;
 public:
 	CountdownBar(int limitTime_ms);
 	~CountdownBar() = default;

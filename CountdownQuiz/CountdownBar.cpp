@@ -3,34 +3,32 @@
 
 using RC = util::ResolutionConverter;
 
-const int CountdownBar::BAR_LENGTH_ = 520;
-const int CountdownBar::BAR_HEIGHT_ = 20;
-const double CountdownBar::HSV_BEGIN_ANGLE_ = 135.0;
-const double CountdownBar::HSV_END_ANGLE_ = 0.0;
+const Vec2 CountdownBar::m_POSITION = {10.0, 6.0};
+const double CountdownBar::m_BAR_LENGTH = 70.0;
+const double CountdownBar::m_BAR_WIDTH = 4.0;
+const double CountdownBar::m_HSV_BEGIN_ANGLE = 135.0;
+const double CountdownBar::m_HSV_END_ANGLE = 0.0;
 
 CountdownBar::CountdownBar(int limitTime_ms)
-	: limitTime_ms_(limitTime_ms)
-	, fontOfCountNumber_(30)
+	: m_limitTime_ms(limitTime_ms)
 {
 }
 
 CountdownBar& CountdownBar::operator=(CountdownBar& obj)
 {
-	this->nowBarLength_ = obj.nowBarLength_;
-	this->nowLimitTime_s_ = obj.nowLimitTime_s_;
+	this->m_nowBarLength = obj.m_nowBarLength;
+	this->m_nowHSVAngle = obj.m_nowHSVAngle;
 	return *this;
 }
 
 void CountdownBar::update(int elapsedTime_ms)
 {
-	double normTime = util::Math::reverseNorm(elapsedTime_ms, 0.0, limitTime_ms_);
-	nowBarLength_ = int(520 * normTime);
-	nowLimitTime_s_ = int(util::Time::millisecToSec(limitTime_ms_) * normTime);
-	nowHSVAngle_ = util::Math::inverseNorm(normTime, HSV_END_ANGLE_, HSV_BEGIN_ANGLE_);
+	double t = util::Math::norm(elapsedTime_ms, 0.0, m_limitTime_ms);
+	m_nowBarLength = EaseInOut(m_BAR_LENGTH, 0.0, Easing::Linear, t);
+	m_nowHSVAngle = EaseInOut(m_HSV_BEGIN_ANGLE, m_HSV_END_ANGLE, Easing::Linear, t);
 }
 
 void CountdownBar::draw() const
 {
-	Rect(nowBarLength_, BAR_HEIGHT_).setPos(100, 20).draw(HSV(nowHSVAngle_, 1.0, 1.0));
-	fontOfCountNumber_(nowLimitTime_s_).drawCenter(RC::toVec2(6.5, 6.5));
+	Rect(RC::toX(m_nowBarLength), RC::toY(m_BAR_WIDTH)).setPos(RC::toVec2(m_POSITION).asPoint()).draw(HSV(m_nowHSVAngle, 1.0, 1.0));
 }
