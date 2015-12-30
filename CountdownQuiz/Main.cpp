@@ -1,14 +1,23 @@
-﻿
-# include <Siv3D.hpp>
+﻿#include <Siv3D.hpp>
+#include "CountdownBar.h"
+#include "CountdownNumber.h"
 
 void Main()
 {
-	const Font font(30);
+	TimerMillisec timer;
+	timer.start();
 
-	while (System::Update())
-	{
-		font(L"ようこそ、Siv3D の世界へ！").draw();
+	CountdownBar bar(10000);
+	CountdownNumber number(10000);
 
-		Circle(Mouse::Pos(), 50).draw({ 255, 0, 0, 127 });
+	while(System::Update()) {
+		int elapsed = timer.elapsed();
+		if(elapsed > 10000) {
+			timer.pause();
+		}
+		bar.update(elapsed);
+		number.update(elapsed);
+		bar.draw();
+		number.draw();
 	}
 }
