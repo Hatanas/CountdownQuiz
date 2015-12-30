@@ -12,6 +12,7 @@ HintDrawer::HintDrawer(String hintText)
 
 HintDrawer& HintDrawer::operator=(HintDrawer& obj)
 {
+	obj;
 	return *this;
 }
 
