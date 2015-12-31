@@ -3,10 +3,13 @@
 
 using RC = util::ResolutionConverter;
 
-HintDrawer::HintDrawer(String hintText)
-	: m_hintTextFont(20)
+const double HintDrawer::m_FONT_SIZE = 3.0;
+const Vec2 HintDrawer::m_TEXT_AREA_SIZE = {60.0, 8.0};
+
+HintDrawer::HintDrawer(String hintText, double positionY)
+	: m_hintTextFont(RC::toY(m_FONT_SIZE))
 	, m_hintText(hintText)
-	, m_y(20.0)
+	, m_centerPosition_px(m_hintTextFont(m_hintText).regionCenter(RC::toVec2({50.0, positionY})).center)
 {
 }
 
@@ -23,6 +26,6 @@ void HintDrawer::update()
 
 void HintDrawer::draw() const
 {
-	//RoundRect(RectF(RC::toX(80.0), RC::toY(10.0)), 6.0).setCenter(RC::toVec2({50.0, m_y}).asPoint()).draw(Palette::Orange).drawFrame(1.0, 0.0, Palette::Red);
-	m_hintTextFont(m_hintText).drawCenter(Rect(RC::toX(80.0), RC::toY(10.0)).setCenter(RC::toVec2({50.0, m_y}).asPoint()).draw(Palette::Orange).drawFrame(1.0, 0.0, Palette::Red).center);
+	RoundRect(RectF(RC::toVec2(m_TEXT_AREA_SIZE)), 7.0).setCenter(m_centerPosition_px).draw(Palette::Orange).drawFrame(2.0, 0.0, Palette::Red);
+	m_hintTextFont(m_hintText).drawCenter(m_centerPosition_px);
 }
