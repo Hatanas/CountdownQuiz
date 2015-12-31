@@ -12,7 +12,8 @@ class CountdownNumber
 {
 private:
 	static const Vec2 m_CENTER_POSITION;
-	static const unsigned int m_FONT_SIZE;
+	static const double m_FONT_SIZE;
+	static const double m_CIRCLE_RADIUS;
 private:
 	const Font m_countNumberFont;
 	const uint32 m_limitTime_ms;

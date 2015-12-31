@@ -3,12 +3,13 @@
 
 using RC = util::ResolutionConverter;
 
-const Vec2 CountdownNumber::m_CENTER_POSITION = {6.5, 6.5};
-const unsigned int CountdownNumber::m_FONT_SIZE = 30;
+const Vec2 CountdownNumber::m_CENTER_POSITION = {10.0, 15.0};
+const double CountdownNumber::m_FONT_SIZE = 5.0;
+const double CountdownNumber::m_CIRCLE_RADIUS = 10.0;
 
 
 CountdownNumber::CountdownNumber(uint32 limitTime_ms)
-	: m_countNumberFont(m_FONT_SIZE)
+	: m_countNumberFont(RC::toY(m_FONT_SIZE))
 	, m_limitTime_ms(limitTime_ms)
 {
 }
