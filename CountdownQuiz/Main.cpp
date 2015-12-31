@@ -1,8 +1,8 @@
 ﻿#include <Siv3D.hpp>
-#include "CountdownBar.h"
-#include "CountdownNumber.h"
-#include "HintDrawer.h"
-#include "ResolutionConverter.h"
+#include "Source/CountdownBar.h"
+#include "Source/CountdownNumber.h"
+#include "Source/HintDrawer.h"
+#include "Source/Utility/ResolutionConverter.h"
 
 void Main()
 {

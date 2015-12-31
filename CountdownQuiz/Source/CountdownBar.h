@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "ResolutionConverter.h"
-#include "Time.h"
-#include "Math.h"
+#include "Utility/ResolutionConverter.h"
+#include "Utility/Time.h"
+#include "Utility/Math.h"
 
 
 /// <summary>
