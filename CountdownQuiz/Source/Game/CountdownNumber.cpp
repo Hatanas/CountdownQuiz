@@ -11,6 +11,7 @@ const double CountdownNumber::m_CIRCLE_RADIUS = 10.0;
 CountdownNumber::CountdownNumber(uint32 limitTime_ms)
 	: m_countNumberFont(RC::toY(m_FONT_SIZE))
 	, m_limitTime_ms(limitTime_ms)
+	, m_remainingTime(0)
 {
 }
 

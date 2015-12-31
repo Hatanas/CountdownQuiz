@@ -1,7 +1,8 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "Utility/ResolutionConverter.h"
+#include "../Utility/ResolutionConverter.h"
+#include "../Utility/Math.h"
 
 
 /// <summary>
@@ -10,11 +11,13 @@
 class HintDrawer
 {
 	static const double m_FONT_SIZE;
-	static const Vec2 m_TEXT_AREA_SIZE;
+	//static const Vec2 m_TEXT_AREA_SIZE;
 private:
 	const Font m_hintTextFont;
 	const String m_hintText;
-	const Vec2 m_centerPosition_px;
+	const Vec2 m_centerPosition;
+private:
+	TimerMillisec m_timer;
 public:
 	/// <summary>
 	/// コンストラクタ
@@ -34,5 +37,7 @@ public:
 	/// ヒントの描画をする
 	/// </summary>
 	void draw() const;
+private:
+	//void kineticFunction(KineticTypography& k) const;
 };
 

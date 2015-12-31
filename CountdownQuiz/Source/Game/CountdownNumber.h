@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "Utility/ResolutionConverter.h"
-#include "Utility/Time.h"
-#include "Utility/Math.h"
+#include "../Utility/ResolutionConverter.h"
+#include "../Utility/Time.h"
+#include "../Utility/Math.h"
 
 /// <summary>
 /// 残り時間を表示するためのクラス
@@ -17,6 +17,7 @@ private:
 private:
 	const Font m_countNumberFont;
 	const uint32 m_limitTime_ms;
+private:
 	uint32 m_remainingTime;
 public:
 	/// <summary>

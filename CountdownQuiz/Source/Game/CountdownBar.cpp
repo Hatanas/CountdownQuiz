@@ -11,6 +11,8 @@ const double CountdownBar::m_HSV_END_ANGLE = 0.0;
 
 CountdownBar::CountdownBar(int limitTime_ms)
 	: m_limitTime_ms(limitTime_ms)
+	, m_nowBarLength(m_BAR_LENGTH)
+	, m_nowHSVAngle(m_HSV_BEGIN_ANGLE)
 {
 }
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "Utility/ResolutionConverter.h"
-#include "Utility/Time.h"
-#include "Utility/Math.h"
+#include "../Utility/ResolutionConverter.h"
+#include "../Utility/Time.h"
+#include "../Utility/Math.h"
 
 
 /// <summary>
@@ -19,6 +19,7 @@ private:
 	static const double m_HSV_END_ANGLE;
 private:
 	const uint32 m_limitTime_ms;
+private:
 	double m_nowBarLength;
 	double m_nowHSVAngle;
 public:
