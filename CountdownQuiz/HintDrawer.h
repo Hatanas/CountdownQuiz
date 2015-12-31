@@ -20,6 +20,7 @@ public:
 	/// コンストラクタ
 	/// </summary>
 	/// <param name="hint"> ヒントのテキスト </param>
+	/// <param name="positionY"> y座標値(%) </param>
 	HintDrawer(String hintText, double positionY);
 	~HintDrawer() = default;
 	HintDrawer& operator=(HintDrawer& obj);

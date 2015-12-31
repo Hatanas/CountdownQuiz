@@ -3,9 +3,9 @@
 
 using RC = util::ResolutionConverter;
 
-const Vec2 CountdownBar::m_POSITION = {10.0, 6.0};
-const double CountdownBar::m_BAR_LENGTH = 70.0;
-const double CountdownBar::m_BAR_WIDTH = 4.0;
+const Vec2 CountdownBar::m_POSITION = {15.0, 5.0};
+const double CountdownBar::m_BAR_LENGTH = 80.0;
+const double CountdownBar::m_BAR_WIDTH = 10.0;
 const double CountdownBar::m_HSV_BEGIN_ANGLE = 135.0;
 const double CountdownBar::m_HSV_END_ANGLE = 0.0;
 
