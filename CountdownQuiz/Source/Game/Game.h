@@ -2,8 +2,9 @@
 
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
-#include "CountdownBar.h"
-#include "CountdownNumber.h"
+#include <list>
+#include <algorithm>
+#include "Countdown.h"
 #include "HintDrawer.h"
 #include "AnswerButton.h"
 
@@ -13,11 +14,10 @@ class Game : public SceneManager<String>::Scene
 private:
 	static const uint32 m_LIMIT_TIME;
 private:
-	CountdownBar m_bar;
-	CountdownNumber m_number;
-	HintDrawer m_hint;
+	Countdown m_countdown;
+	std::list<HintDrawer> m_hints;
 	AnswerButton m_answer;
-	TimerMillisec m_timer;
+	EventTimerMillisec m_timer;
 public:
 	Game();
 	~Game() = default;

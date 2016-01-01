@@ -10,8 +10,8 @@
 /// </summary>
 class HintDrawer
 {
+private:
 	static const double m_FONT_SIZE;
-	//static const Vec2 m_TEXT_AREA_SIZE;
 private:
 	const Font m_hintTextFont;
 	const String m_hintText;
@@ -26,7 +26,7 @@ public:
 	/// <param name="positionY"> y座標値(%) </param>
 	HintDrawer(String hintText, double positionY);
 	~HintDrawer() = default;
-	HintDrawer& operator=(HintDrawer& obj);
+	HintDrawer& operator=(const HintDrawer& obj);
 public:
 	/// <summary>
 	/// 更新をする
@@ -37,7 +37,5 @@ public:
 	/// ヒントの描画をする
 	/// </summary>
 	void draw() const;
-private:
-	//void kineticFunction(KineticTypography& k) const;
 };
 

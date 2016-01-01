@@ -8,7 +8,7 @@
 /// <summary>
 /// 残り時間を表示するためのクラス
 /// </summary>
-class CountdownNumber
+class CountdownNumber : Uncopyable
 {
 private:
 	static const Vec2 m_CENTER_POSITION;
@@ -18,7 +18,7 @@ private:
 	const Font m_countNumberFont;
 	const uint32 m_limitTime_ms;
 private:
-	uint32 m_remainingTime;
+	uint32 m_remainingTime_s;
 public:
 	/// <summary>
 	/// コンストラクタ
@@ -26,7 +26,6 @@ public:
 	/// <param name="limitTime_ms"> 制限時間(ms) </summary>
 	CountdownNumber(uint32 limitTime_ms);
 	~CountdownNumber() = default;
-	CountdownNumber& operator=(CountdownNumber& obj);
 public:
 	/// <summary>
 	/// 残り時間を更新する

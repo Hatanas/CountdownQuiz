@@ -4,7 +4,6 @@
 using RC = util::ResolutionConverter;
 
 const double HintDrawer::m_FONT_SIZE = 3.0;
-//const Vec2 HintDrawer::m_TEXT_AREA_SIZE = {60.0, 8.0};
 
 HintDrawer::HintDrawer(String hintText, double positionY)
 	: m_hintTextFont(RC::toY(m_FONT_SIZE))
@@ -14,9 +13,9 @@ HintDrawer::HintDrawer(String hintText, double positionY)
 	m_timer.start();
 }
 
-HintDrawer& HintDrawer::operator=(HintDrawer& obj)
+HintDrawer& HintDrawer::operator=(const HintDrawer& obj)
 {
-	obj;
+	this->m_timer = obj.m_timer;
 	return *this;
 }
 

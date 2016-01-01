@@ -7,7 +7,7 @@
 /// <summary>
 /// 回答の選択肢を表示するためのクラス
 /// </summary>
-class AnswerButton
+class AnswerButton : Uncopyable
 {
 private:
 	static const double m_FONT_SIZE;
@@ -27,7 +27,6 @@ public:
 	/// <param name="position"> 選択肢の中心位置(%) </param>
 	AnswerButton(String answerText, Vec2 position);
 	~AnswerButton() = default;
-	AnswerButton& operator=(AnswerButton& obj);
 public:
 	/// <summary>
 	/// ボタンの更新をする

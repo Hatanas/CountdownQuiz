@@ -9,21 +9,14 @@ const double CountdownBar::m_BAR_WIDTH = 10.0;
 const double CountdownBar::m_HSV_BEGIN_ANGLE = 135.0;
 const double CountdownBar::m_HSV_END_ANGLE = 0.0;
 
-CountdownBar::CountdownBar(int limitTime_ms)
+CountdownBar::CountdownBar(uint32 limitTime_ms)
 	: m_limitTime_ms(limitTime_ms)
 	, m_nowBarLength(m_BAR_LENGTH)
 	, m_nowHSVAngle(m_HSV_BEGIN_ANGLE)
 {
 }
 
-CountdownBar& CountdownBar::operator=(CountdownBar& obj)
-{
-	this->m_nowBarLength = obj.m_nowBarLength;
-	this->m_nowHSVAngle = obj.m_nowHSVAngle;
-	return *this;
-}
-
-void CountdownBar::update(int elapsedTime_ms)
+void CountdownBar::update(uint32 elapsedTime_ms)
 {
 	double t = util::Math::norm(elapsedTime_ms, 0.0, m_limitTime_ms);
 	m_nowBarLength = EaseInOut(m_BAR_LENGTH, 0.0, Easing::Linear, t);
@@ -33,4 +26,5 @@ void CountdownBar::update(int elapsedTime_ms)
 void CountdownBar::draw() const
 {
 	Rect(RC::toX(m_nowBarLength), RC::toY(m_BAR_WIDTH)).setPos(RC::toVec2(m_POSITION).asPoint()).draw(HSV(m_nowHSVAngle, 1.0, 1.0));
+	Rect(RC::toX(m_BAR_LENGTH), RC::toY(m_BAR_WIDTH)).setPos(RC::toVec2(m_POSITION).asPoint()).drawFrame(10.0, 0.0, Color(L"#444444"));
 }

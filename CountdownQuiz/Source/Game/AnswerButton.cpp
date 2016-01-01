@@ -15,12 +15,6 @@ AnswerButton::AnswerButton(String answerText, Vec2 position)
 	m_button = RoundRect(RectF(RC::toVec2(m_BUTTON_SIZE)), 10.0).setCenter(RC::toVec2(m_centerPosition));
 }
 
-AnswerButton& AnswerButton::operator=(AnswerButton& obj)
-{
-	obj;
-	return *this;
-}
-
 
 void AnswerButton::update()
 {
