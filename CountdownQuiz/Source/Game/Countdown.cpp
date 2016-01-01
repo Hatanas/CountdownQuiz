@@ -3,7 +3,7 @@
 
 using RC = util::ResolutionConverter;
 
-const double Countdown::m_CIRCLE_RADIUS = 10.0;
+const double Countdown::m_CIRCLE_RADIUS = 10.15;
 const Vec2 Countdown::m_CIRCLE_POSITION = {10.0, 15.0};
 const Vec2 Countdown::m_RECT_SIZE = {85.0, 10.0};
 const Vec2 Countdown::m_RECT_POSITION = {10.0, 5.0};

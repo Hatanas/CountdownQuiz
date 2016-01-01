@@ -2,22 +2,13 @@
 
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
-#include <list>
-#include <algorithm>
-#include "Countdown.h"
-#include "HintDrawer.h"
-#include "AnswerButton.h"
+#include "Quiz.h"
 
 
 class Game : public SceneManager<String>::Scene
 {
 private:
-	static const uint32 m_LIMIT_TIME;
-private:
-	Countdown m_countdown;
-	std::list<HintDrawer> m_hints;
-	AnswerButton m_answer;
-	EventTimerMillisec m_timer;
+	Quiz m_quiz;
 public:
 	Game();
 	~Game() = default;

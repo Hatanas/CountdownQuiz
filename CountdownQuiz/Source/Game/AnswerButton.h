@@ -7,7 +7,7 @@
 /// <summary>
 /// 回答の選択肢を表示するためのクラス
 /// </summary>
-class AnswerButton : Uncopyable
+class AnswerButton
 {
 private:
 	static const double m_FONT_SIZE;
@@ -19,14 +19,17 @@ private:
 private:
 	Color m_nowButtonColor;
 	RoundRect m_button;
+	bool m_isCorrect;
 public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
 	/// <param name="answerText"> 選択肢のテキスト </param>
+	/// <param name="isCorrect"> 正解の選択肢かどうか </param>
 	/// <param name="position"> 選択肢の中心位置(%) </param>
-	AnswerButton(String answerText, Vec2 position);
+	AnswerButton(String answerText, bool isCorrect, Vec2 position);
 	~AnswerButton() = default;
+	AnswerButton& operator=(const AnswerButton& obj);
 public:
 	/// <summary>
 	/// ボタンの更新をする
@@ -37,5 +40,17 @@ public:
 	/// ボタンの描画をする
 	/// </summary>
 	void draw() const;
+
+	/// <summary>
+	/// ボタンがクリックされているかを確認する
+	/// </summary>
+	/// <returns> ボタンがクリックされたか </returns>
+	bool checkClicked() const;
+
+	/// <summary>
+	/// 正しい答えのボタンかどうかを返す
+	/// </summary>
+	/// <returns> 正解のボタンかどうか </returns>
+	bool isCorrect() const;
 };
 
