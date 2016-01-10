@@ -2,21 +2,20 @@
 
 
 Game::Game()
-	: m_quiz()
+	: m_sceneChanger()
 {
 }
 
 void Game::init()
 {
-	m_quiz.init();
 }
 
 void Game::update()
 {
-	m_quiz.update();
+	m_sceneChanger.update();
 }
 
 void Game::draw() const
 {
-	m_quiz.draw();
+	m_sceneChanger.draw();
 }

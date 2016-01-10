@@ -1,15 +1,15 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "../Utility/ResolutionConverter.h"
-#include "../Utility/Time.h"
-#include "../Utility/Math.h"
+#include "../../../Utility/ResolutionConverter.h"
+#include "../../../Utility/Time.h"
+#include "../../../Utility/Math.h"
 
 
 /// <summary>
 /// カウントダウンバーに関するクラス
 /// </summary>
-class CountdownBar : Uncopyable
+class CountdownBar
 {
 private:
 	static const Vec2 m_POSITION;
@@ -29,6 +29,7 @@ public:
 	/// <param name="limitTime_ms"> 制限時間(ms) </param>
 	CountdownBar(uint32 limitTime_ms);
 	~CountdownBar() = default;
+	CountdownBar& operator=(const CountdownBar& obj);
 public:
 	/// <summary>
 	/// バーの長さを更新する

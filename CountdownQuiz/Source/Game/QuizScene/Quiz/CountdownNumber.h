@@ -1,14 +1,14 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "../Utility/ResolutionConverter.h"
-#include "../Utility/Time.h"
-#include "../Utility/Math.h"
+#include "../../../Utility/ResolutionConverter.h"
+#include "../../../Utility/Time.h"
+#include "../../../Utility/Math.h"
 
 /// <summary>
 /// 残り時間を表示するためのクラス
 /// </summary>
-class CountdownNumber : Uncopyable
+class CountdownNumber
 {
 private:
 	static const Vec2 m_CENTER_POSITION;
@@ -26,6 +26,7 @@ public:
 	/// <param name="limitTime_ms"> 制限時間(ms) </summary>
 	CountdownNumber(uint32 limitTime_ms);
 	~CountdownNumber() = default;
+	CountdownNumber& operator=(const CountdownNumber& obj);
 public:
 	/// <summary>
 	/// 残り時間を更新する

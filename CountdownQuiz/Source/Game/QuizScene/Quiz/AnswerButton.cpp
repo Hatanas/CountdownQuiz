@@ -12,7 +12,7 @@ AnswerButton::AnswerButton(String answerText, bool isCorrect, Vec2 position)
 	, m_centerPosition(position)
 	, m_answerTextFont(RC::toY(m_FONT_SIZE))
 {
-	m_nowButtonColor = Color(Palette::White, 255);
+	m_nowButtonColor = Color(L"#EEEEEE");
 	m_button = RoundRect(RectF(RC::toVec2(m_BUTTON_SIZE)), 10.0).setCenter(RC::toVec2(m_centerPosition));
 }
 

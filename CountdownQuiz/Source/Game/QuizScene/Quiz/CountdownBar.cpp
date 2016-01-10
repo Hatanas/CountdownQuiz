@@ -16,6 +16,14 @@ CountdownBar::CountdownBar(uint32 limitTime_ms)
 {
 }
 
+CountdownBar& CountdownBar::operator=(const CountdownBar& obj)
+{
+	this->m_nowBarLength = obj.m_nowBarLength;
+	this->m_nowHSVAngle = obj.m_nowHSVAngle;
+	return *this;
+}
+
+
 void CountdownBar::update(uint32 elapsedTime_ms)
 {
 	double t = util::Math::norm(elapsedTime_ms, 0.0, m_limitTime_ms);

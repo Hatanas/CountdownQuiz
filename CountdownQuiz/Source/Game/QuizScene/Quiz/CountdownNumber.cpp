@@ -15,6 +15,12 @@ CountdownNumber::CountdownNumber(uint32 limitTime_ms)
 {
 }
 
+CountdownNumber& CountdownNumber::operator=(const CountdownNumber& obj)
+{
+	this->m_remainingTime_s = obj.m_remainingTime_s;
+	return *this;
+}
+
 
 void CountdownNumber::update(uint32 elapsedTime_ms)
 {

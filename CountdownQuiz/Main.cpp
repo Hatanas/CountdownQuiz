@@ -5,8 +5,9 @@
 
 void Main()
 {
-	Window::SetVirtualFullscreen(Window::GetState().screenSize);
+	// Window::SetVirtualFullscreen(Window::GetState().screenSize);
 	util::ResolutionConverter::setWindowResolution(Window::Width(), Window::Height());
+	Graphics::SetBackground(Color(L"#EEEEEE"));
 
 	SceneManager<String> manager;
 	manager.add<Game>(L"Game");

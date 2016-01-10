@@ -20,6 +20,6 @@ public:
 	/// <returns> ê≥ãKâªÇ≥ÇÍÇΩíl </returns>
 	static double norm(double x, double minX, double maxX);
 	// static double reverseNorm(double x, double minX, double maxX);
-	// static double inverseNorm(double normX, double minX, double maxX);
+	static double inverseNorm(double normX, double minX, double maxX);
 };
 }
