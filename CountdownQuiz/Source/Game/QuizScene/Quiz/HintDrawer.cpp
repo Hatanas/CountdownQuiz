@@ -30,8 +30,8 @@ void HintDrawer::update()
 void HintDrawer::draw() const
 {
 	const auto kineticFunction = [this](KineticTypography& k) {
-		const double intercept = EaseInOut(0.0, 512.0, Easing::Linear, util::Math::norm(m_timer.elapsed(), 0, 1000));
-		k.col = Color(34, 34, 34, Clamp(static_cast<int>(-255.0 / (k.textLength - 1) * k.index + intercept), 0, 255));
+		const double intercept = EaseInOut(0.0, 1.0 + (k.textLength - 1) / 3.0, Easing::Linear, util::Math::norm(m_timer.elapsed(), 0, 1000));
+		k.col = ColorF(Color(L"#222222"), Clamp(- 1.0 / 3.0 * k.index + intercept, 0.0, 1.0));
 	};
 	m_hintTextFont.drawKinetic(m_hintText, m_hintTextFont(m_hintText).regionCenter(RC::toVec2(m_centerPosition)).pos, kineticFunction);
 }

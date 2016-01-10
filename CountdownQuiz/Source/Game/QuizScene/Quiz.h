@@ -18,6 +18,7 @@ private:
 	std::list<HintDrawer> m_hints;
 	std::vector<AnswerButton> m_answer;
 	EventTimerMillisec m_timer;
+	std::vector<Vec2> m_HINT_POSITIONS;
 public:
 	Quiz(std::shared_ptr<SubSceneManager> sceneChanger);
 	~Quiz() = default;

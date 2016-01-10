@@ -7,7 +7,9 @@ enum class QuizState
 	MAIN,
 	CORRECT,
 	INCORRECT,
+	TIMEUP,
 	COMMENTARY,
+	NEXT,
 
 	NONE
 };

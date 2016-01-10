@@ -1,24 +1,18 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "../../../Utility/ResolutionConverter.h"
+#include "../../../Utility/Button.h"
 
 
 /// <summary>
 /// 回答の選択肢を表示するためのクラス
 /// </summary>
-class AnswerButton
+class AnswerButton : public util::Button
 {
 private:
 	static const double m_FONT_SIZE;
 	static const Vec2 m_BUTTON_SIZE;
 private:
-	const Font m_answerTextFont;
-	const String m_answerText;
-	const Vec2 m_centerPosition;
-private:
-	Color m_nowButtonColor;
-	RoundRect m_button;
 	bool m_isCorrect;
 public:
 	/// <summary>
@@ -29,23 +23,7 @@ public:
 	/// <param name="position"> 選択肢の中心位置(%) </param>
 	AnswerButton(String answerText, bool isCorrect, Vec2 position);
 	~AnswerButton() = default;
-	AnswerButton& operator=(const AnswerButton& obj);
 public:
-	/// <summary>
-	/// ボタンの更新をする
-	/// </summary>
-	void update();
-
-	/// <summary>
-	/// ボタンの描画をする
-	/// </summary>
-	void draw() const;
-
-	/// <summary>
-	/// ボタンがクリックされているかを確認する
-	/// </summary>
-	/// <returns> ボタンがクリックされたか </returns>
-	bool checkClicked() const;
 
 	/// <summary>
 	/// 正しい答えのボタンかどうかを返す

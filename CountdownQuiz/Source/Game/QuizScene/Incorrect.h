@@ -14,7 +14,7 @@ private:
 	static const Vec2 m_RECT_SIZE;
 private:
 	std::shared_ptr<SubSceneManager> m_sceneChanger;
-	TimerMillisec m_timer;
+	EasingController<double> m_easing;
 	double m_alpha;
 public:
 	Incorrect(std::shared_ptr<SubSceneManager> sceneChanger);

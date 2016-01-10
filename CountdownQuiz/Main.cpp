@@ -6,6 +6,7 @@
 void Main()
 {
 	// Window::SetVirtualFullscreen(Window::GetState().screenSize);
+	Window::Resize(960, 540);
 	util::ResolutionConverter::setWindowResolution(Window::Width(), Window::Height());
 	Graphics::SetBackground(Color(L"#EEEEEE"));
 

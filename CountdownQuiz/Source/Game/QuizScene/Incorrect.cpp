@@ -8,19 +8,19 @@ const Vec2 Incorrect::m_RECT_SIZE = {50.0, 10.0};
 
 Incorrect::Incorrect(std::shared_ptr<SubSceneManager> sceneChanger)
 	: m_sceneChanger(sceneChanger)
+	, m_easing(1.0, 0.0, Easing::Expo, 2000)
 {
 }
 
 void Incorrect::start()
 {
-	m_timer.start();
+	m_easing.start();
 }
 
 void Incorrect::update()
 {
-	double normTime = util::Math::norm(m_timer.elapsed(), 0, 2000);
-	m_alpha = -Math::Pow(2.0 * normTime - 1.0, 6.0) + 1.0;
-	if(normTime == 1.0) {
+	m_alpha = m_easing.easeIn();
+	if(m_easing.isEnd()) {
 		m_sceneChanger->reserveNextScene(QuizState::COMMENTARY);
 	}
 }

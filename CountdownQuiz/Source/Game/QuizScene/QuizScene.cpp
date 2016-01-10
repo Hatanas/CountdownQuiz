@@ -8,6 +8,9 @@ QuizScene::QuizScene()
 	m_quizScene = std::make_shared<Quiz>(m_sceneChanger);
 	m_correct = std::make_shared<Correct>(m_sceneChanger);
 	m_incorrect = std::make_shared<Incorrect>(m_sceneChanger);
+	m_timeup = std::make_shared<Timeup>(m_sceneChanger);
+	m_commentary = std::make_shared<Commentary>(m_sceneChanger);
+	m_nextDummy = std::make_shared<NextDummy>(m_sceneChanger);
 	init();
 }
 
@@ -30,6 +33,12 @@ void QuizScene::draw() const
 	m_nowScene->draw();
 }
 
+bool QuizScene::isSwitchNextQuiz() const
+{
+	return m_sceneChanger->getNowScene() == QuizState::NEXT;
+}
+
+
 void QuizScene::init()
 {
 	changeProcess();
@@ -50,6 +59,15 @@ void QuizScene::changeProcess()
 			break;
 		case QuizState::INCORRECT:
 			m_nowScene = m_incorrect;
+			break;
+		case QuizState::TIMEUP:
+			m_nowScene = m_timeup;
+			break;
+		case QuizState::COMMENTARY:
+			m_nowScene = m_commentary;
+			break;
+		case QuizState::NEXT:
+			m_nowScene = m_nextDummy;
 			break;
 		default:
 			assert(!"ë∂ç›ÇµÇ»Ç¢SceneÇ™åƒÇ—èoÇ≥ÇÍÇ‹ÇµÇΩ");

@@ -3,22 +3,24 @@
 #include <Siv3D.hpp>
 #include "SubScene.h"
 #include "SubSceneManager.h"
-#include "../../Utility/Math.h"
 #include "../../Utility/ResolutionConverter.h"
 
 
-class Correct : public SubScene
+class Timeup : public SubScene
 {
 private:
-	static const Vec2 m_CIRCLE_POSITION;
-	static const double m_CIRCLE_RADIUS;
+	static const Vec2 m_FONT_CENTER_POSITION;
+	static const double m_FONT_SIZE;
+private:
+	const Font m_font;
 private:
 	std::shared_ptr<SubSceneManager> m_sceneChanger;
 	EasingController<double> m_easing;
-	double m_alpha;
+	uint32 m_alpha;
 public:
-	Correct(std::shared_ptr<SubSceneManager> sceneChanger);
-	~Correct() = default;
+	Timeup(std::shared_ptr<SubSceneManager> sceneChanger);
+	~Timeup() = default;
+	Timeup& operator=(const Timeup& obj);
 public:
 	void start() override;
 	void update() override;

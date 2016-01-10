@@ -6,6 +6,9 @@
 #include "SubScene.h"
 #include "Correct.h"
 #include "Incorrect.h"
+#include "Timeup.h"
+#include "Commentary.h"
+#include "NextDummy.h"
 
 
 class QuizScene
@@ -17,6 +20,9 @@ private:
 	std::shared_ptr<Quiz> m_quizScene;
 	std::shared_ptr<Correct> m_correct;
 	std::shared_ptr<Incorrect> m_incorrect;
+	std::shared_ptr<Timeup> m_timeup;
+	std::shared_ptr<Commentary> m_commentary;
+	std::shared_ptr<NextDummy> m_nextDummy;
 public:
 	QuizScene();
 	~QuizScene() = default;
@@ -30,6 +36,12 @@ public:
 	/// シーンを描画する．
 	/// </summary>
 	void draw() const;
+
+	/// <summary>
+	/// 次のクイズに移行するかどうか
+	/// </summary>
+	/// <returns> 次に進むか </returns>
+	bool isSwitchNextQuiz() const;
 private:
 	void init();
 	void changeProcess();
