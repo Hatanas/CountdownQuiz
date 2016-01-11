@@ -7,11 +7,12 @@ const uint32 Quiz::m_LIMIT_TIME = 20000;
 Quiz::Quiz(std::shared_ptr<SubSceneManager> sceneChanger)
 	: m_sceneChanger(sceneChanger)
 	, m_countdown(m_LIMIT_TIME)
+	, m_HINT_POSITIONS(4)
 {
-	m_HINT_POSITIONS.push_back({17.0, 85.0});
-	m_HINT_POSITIONS.push_back({39.0, 85.0});
-	m_HINT_POSITIONS.push_back({61.0, 85.0});
-	m_HINT_POSITIONS.push_back({83.0, 85.0});
+	m_HINT_POSITIONS[0] = {17.0, 85.0};
+	m_HINT_POSITIONS[1] = {39.0, 85.0};
+	m_HINT_POSITIONS[2] = {61.0, 85.0};
+	m_HINT_POSITIONS[3] = {83.0, 85.0};
 	init();
 }
 
@@ -48,14 +49,15 @@ void Quiz::update()
 	std::for_each(m_hints.begin(), m_hints.end(), [](HintDrawer& hint) { hint.update(); });
 	std::for_each(m_answer.begin(), m_answer.end(), [](AnswerButton& answer) { answer.update(); });
 
+	// 回答ボタンの判定
 	auto clickableItr = std::find_if(m_answer.begin(), m_answer.end(), [](const AnswerButton& answer) { return answer.isClicked(); });
 	if(clickableItr != m_answer.end()) {
 		if(clickableItr->isCorrect()) {
-			Println(L"正解！");
+			// 正解の時
 			m_sceneChanger->reserveNextScene(QuizState::CORRECT);
 		}
 		else {
-			Println(L"残念…");
+			// 不正解の時
 			m_sceneChanger->reserveNextScene(QuizState::INCORRECT);
 		}
 	}

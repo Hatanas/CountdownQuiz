@@ -26,6 +26,7 @@ util::Button& util::Button::operator=(const Button& obj)
 void util::Button::update()
 {
 	m_bodyColor = m_body.mouseOver ? Color(L"#DDDDDD") : Color(L"#EEEEEE");
+	m_body.setCenter(RC::toVec2(m_centerPosition));
 }
 
 void util::Button::draw() const

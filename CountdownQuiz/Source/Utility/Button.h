@@ -8,11 +8,11 @@ namespace util
 {
 class Button
 {
-private:
+protected:
 	const String m_text;
 	const Vec2 m_size;
 	const Font m_font;
-private:
+protected:
 	Vec2 m_centerPosition;
 	RoundRect m_body;
 	Color m_bodyColor;
@@ -30,8 +30,9 @@ public:
 public:
 	/// <summaty>
 	/// 更新をする．
+	/// オーバーライド可能．
 	/// </summaty>
-	void update();
+	virtual void update();
 
 	/// <summaty>
 	/// 描画をする．

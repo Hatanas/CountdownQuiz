@@ -2,12 +2,12 @@
 
 #include "SubSceneManager.h"
 #include "QuestionNumberDrawer.h"
-#include "Quiz.h"
+#include "Quiz/Quiz.h"
 #include "SubScene.h"
 #include "Correct.h"
 #include "Incorrect.h"
 #include "Timeup.h"
-#include "Commentary.h"
+#include "Commentary/Commentary.h"
 #include "NextDummy.h"
 
 
@@ -28,6 +28,12 @@ public:
 	~QuizScene() = default;
 public:
 	/// <summary>
+	/// 初期化する．
+	/// 次のクイズに移行する際に呼び出す．
+	/// </summary>
+	void init();
+
+	/// <summary>
 	/// シーンを更新する．
 	/// </summary>
 	void update();
@@ -43,7 +49,6 @@ public:
 	/// <returns> 次に進むか </returns>
 	bool isSwitchNextQuiz() const;
 private:
-	void init();
 	void changeProcess();
 };
 

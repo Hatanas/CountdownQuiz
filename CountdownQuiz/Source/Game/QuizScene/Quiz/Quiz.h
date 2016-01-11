@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include "Quiz/Countdown.h"
-#include "Quiz/HintDrawer.h"
-#include "Quiz/AnswerButton.h"
-#include "SubSceneManager.h"
-#include "SubScene.h"
+#include "Countdown.h"
+#include "HintDrawer.h"
+#include "AnswerButton.h"
+#include "../SubSceneManager.h"
+#include "../SubScene.h"
 
 
 class Quiz : public SubScene

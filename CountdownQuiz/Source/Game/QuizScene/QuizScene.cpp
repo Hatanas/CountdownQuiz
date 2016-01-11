@@ -11,9 +11,14 @@ QuizScene::QuizScene()
 	m_timeup = std::make_shared<Timeup>(m_sceneChanger);
 	m_commentary = std::make_shared<Commentary>(m_sceneChanger);
 	m_nextDummy = std::make_shared<NextDummy>(m_sceneChanger);
-	init();
 }
 
+
+void QuizScene::init()
+{
+	changeProcess();
+	m_nowScene->start();
+}
 
 void QuizScene::update()
 {
@@ -38,12 +43,6 @@ bool QuizScene::isSwitchNextQuiz() const
 	return m_sceneChanger->getNowScene() == QuizState::NEXT;
 }
 
-
-void QuizScene::init()
-{
-	changeProcess();
-	m_nowScene->start();
-}
 
 void QuizScene::changeProcess()
 {

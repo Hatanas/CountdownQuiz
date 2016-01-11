@@ -3,14 +3,12 @@
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
 #include "QuizScene/QuizScene.h"
-#include "QuizScene/Quiz.h"
-#include "QuizScene/QuestionNumberDrawer.h"
 
 
 class Game : public SceneManager<String>::Scene
 {
 private:
-	QuizScene m_sceneChanger;
+	std::list<QuizScene> m_quizScenes;
 public:
 	Game();
 	~Game() = default;
