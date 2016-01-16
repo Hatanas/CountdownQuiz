@@ -12,13 +12,13 @@
 class Quiz : public SubScene
 {
 private:
-	static const uint32 m_LIMIT_TIME;
+	static const Milliseconds m_LIMIT_TIME;
 private:
 	std::shared_ptr<SubSceneManager> m_sceneChanger;
 	Countdown m_countdown;
 	std::list<HintDrawer> m_hints;
 	std::vector<AnswerButton> m_answer;
-	EventTimerMillisec m_timer;
+	EventTimer m_timer;
 	std::vector<Vec2> m_HINT_POSITIONS;
 	QuestionData m_questionData;
 public:
@@ -30,5 +30,5 @@ public:
 	void draw() const override;
 private:
 	void init();
-	void manageHint(const uint32 elapsedTime);
+	void manageHint(const Milliseconds elapsedTime);
 };

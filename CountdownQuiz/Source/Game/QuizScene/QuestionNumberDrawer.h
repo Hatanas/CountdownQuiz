@@ -20,7 +20,7 @@ private:
 	Vec2 m_rectCenterPosition;
 	Vec2 m_backgroundCenterPosition;
 	double m_fontAlpha;
-	TimerMillisec m_timer;
+	Stopwatch m_timer;
 	String m_questionNumber;
 	bool m_isBlind;
 public:

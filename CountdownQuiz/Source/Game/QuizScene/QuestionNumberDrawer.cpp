@@ -35,7 +35,7 @@ void QuestionNumberDrawer::start()
 
 void QuestionNumberDrawer::update()
 {
-	double normTime = util::Math::norm(m_timer.elapsed(), 0, 2000);
+	double normTime = util::Math::norm(m_timer.ms(), 0, 2000);
 	double normPosition = (1.0 / 2.0) * (Math::Pow(2.0 * normTime - 1.0, 5.0) + 1.0);
 	
 	m_rectCenterPosition = {util::Math::inverseNorm(normPosition, 0.0, 200.0) - 50.0, 50.0};

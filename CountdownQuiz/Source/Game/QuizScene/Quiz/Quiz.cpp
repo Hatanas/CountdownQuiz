@@ -1,12 +1,12 @@
 #include "Quiz.h"
 
 
-const uint32 Quiz::m_LIMIT_TIME = 20000;
+const Milliseconds Quiz::m_LIMIT_TIME = Milliseconds(20000);
 
 
 Quiz::Quiz(std::shared_ptr<SubSceneManager> sceneChanger, const QuestionData& questionData)
 	: m_sceneChanger(sceneChanger)
-	, m_countdown(m_LIMIT_TIME)
+	, m_countdown(m_LIMIT_TIME.count())
 	, m_HINT_POSITIONS(4)
 	, m_questionData(questionData)
 {
@@ -20,11 +20,11 @@ Quiz::Quiz(std::shared_ptr<SubSceneManager> sceneChanger, const QuestionData& qu
 
 void Quiz::init()
 {
-	m_timer.setEvent(L"FirstHint", 100);
-	m_timer.setEvent(L"SecondHint", 5000);
-	m_timer.setEvent(L"ThirdHint", 10000);
-	m_timer.setEvent(L"LastHint", 17000);
-	m_timer.setEvent(L"TimerStop", m_LIMIT_TIME);
+	m_timer.addEvent(L"FirstHint", 100.0ms);
+	m_timer.addEvent(L"SecondHint", 5000.0ms);
+	m_timer.addEvent(L"ThirdHint", 10000.0ms);
+	m_timer.addEvent(L"LastHint", 17000.0ms);
+	m_timer.addEvent(L"TimerStop", m_LIMIT_TIME);
 
 	Shuffle(m_HINT_POSITIONS);
 
@@ -43,10 +43,10 @@ void Quiz::start()
 
 void Quiz::update()
 {
-	const uint32 elapsedTime = m_timer.update();
+	const auto elapsedTime = m_timer.update();
 
 	manageHint(elapsedTime);
-	m_countdown.update(elapsedTime);
+	m_countdown.update(elapsedTime.count());
 	std::for_each(m_hints.begin(), m_hints.end(), [](HintDrawer& hint) { hint.update(); });
 	std::for_each(m_answer.begin(), m_answer.end(), [](AnswerButton& answer) { answer.update(); });
 
@@ -72,7 +72,7 @@ void Quiz::draw() const
 }
 
 
-void Quiz::manageHint(const uint32 elapsedTime)
+void Quiz::manageHint(const Milliseconds elapsedTime)
 {
 	if(m_timer.onTriggered(L"FirstHint")) {
 		m_hints.push_back(HintDrawer(m_questionData.m_hints[0], 27.0));

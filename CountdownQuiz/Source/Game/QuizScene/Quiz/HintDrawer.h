@@ -17,7 +17,7 @@ private:
 	const String m_hintText;
 	const Vec2 m_centerPosition;
 private:
-	TimerMillisec m_timer;
+	Stopwatch m_timer;
 public:
 	/// <summary>
 	/// コンストラクタ
