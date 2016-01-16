@@ -194,6 +194,7 @@ ModelManifest.xml
 *.filters
 */Debug/*
 */Release/*
+*.opendb
 
 # Siv3D
 *_Log.html
