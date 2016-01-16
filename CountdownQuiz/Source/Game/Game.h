@@ -2,10 +2,12 @@
 
 #include <Siv3D.hpp>
 #include <HamFramework.hpp>
+#include "QuestionData.h"
+#include "GameData.h"
 #include "QuizScene/QuizScene.h"
 
 
-class Game : public SceneManager<String>::Scene
+class Game : public SceneManager<String, GameData>::Scene
 {
 private:
 	std::list<QuizScene> m_quizScenes;
@@ -22,6 +24,12 @@ public:
 	/// 更新する．
 	/// </summary>
 	void update() override;
+
+	/// <summary>
+	/// シーンのフェードイン時の更新処理をする．
+	/// tが1.0になった時に最初のクイズをスタートする．
+	/// </summary>
+	void updateFadeIn(double t) override;
 
 	/// <summary>
 	/// 描画する．

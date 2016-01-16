@@ -9,6 +9,7 @@
 #include "Timeup.h"
 #include "Commentary/Commentary.h"
 #include "NextDummy.h"
+#include "../QuestionData.h"
 
 
 class QuizScene
@@ -24,7 +25,7 @@ private:
 	std::shared_ptr<Commentary> m_commentary;
 	std::shared_ptr<NextDummy> m_nextDummy;
 public:
-	QuizScene();
+	QuizScene(const QuestionData& questionData);
 	~QuizScene() = default;
 public:
 	/// <summary>

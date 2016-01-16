@@ -7,10 +7,18 @@ Game::Game()
 
 void Game::init()
 {
-	m_quizScenes.push_back(QuizScene());
-	m_quizScenes.push_back(QuizScene());
-	m_quizScenes.push_back(QuizScene());
+	m_data->m_questionData.push_back({1, {L"ƒqƒ“ƒg1", L"‚Ð‚ñ‚Æ2", L"Hint3", L"‘åƒqƒ“ƒg4"}, {L"ƒnƒYƒŒ", L"•s³‰ð", L"Žc”O"}, L"³‰ð"});
+	m_data->m_questionData.push_back({2, {L"ƒqƒ“ƒg1", L"‚Ð‚ñ‚Æ2", L"Hint3", L"‘åƒqƒ“ƒg4"}, {L"ƒnƒYƒŒ", L"•s³‰ð", L"Žc”O"}, L"³‰ð"});
+	m_data->m_questionData.push_back({3, {L"ƒqƒ“ƒg1", L"‚Ð‚ñ‚Æ2", L"Hint3", L"‘åƒqƒ“ƒg4"}, {L"ƒnƒYƒŒ", L"•s³‰ð", L"Žc”O"}, L"³‰ð"});
+
+	std::for_each(m_data->m_questionData.begin(), m_data->m_questionData.end(), [this](const QuestionData &data) {
+		m_quizScenes.push_back(data);
+	});
 	m_quizScenes.front().init();
+}
+
+void Game::updateFadeIn(double t) {
+	update();
 }
 
 void Game::update()

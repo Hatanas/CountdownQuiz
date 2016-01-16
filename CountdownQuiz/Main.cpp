@@ -10,7 +10,9 @@ void Main()
 	util::ResolutionConverter::setWindowResolution(Window::Width(), Window::Height());
 	Graphics::SetBackground(Color(L"#EEEEEE"));
 
-	SceneManager<String> manager;
+	FontAsset::Register(L"HintFont", util::ResolutionConverter::toY(3.0));
+
+	SceneManager<String, GameData> manager;
 	manager.add<Game>(L"Game");
 
 	while(System::Update()) {

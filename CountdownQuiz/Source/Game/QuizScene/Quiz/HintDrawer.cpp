@@ -33,5 +33,6 @@ void HintDrawer::draw() const
 		const double intercept = EaseInOut(0.0, 1.0 + (k.textLength - 1) / 3.0, Easing::Linear, util::Math::norm(m_timer.elapsed(), 0, 1000));
 		k.col = ColorF(Color(L"#222222"), Clamp(- 1.0 / 3.0 * k.index + intercept, 0.0, 1.0));
 	};
-	m_hintTextFont.drawKinetic(m_hintText, m_hintTextFont(m_hintText).regionCenter(RC::toVec2(m_centerPosition)).pos, kineticFunction);
+	FontAsset(L"HintFont").drawKinetic(m_hintText, m_hintTextFont(m_hintText).regionCenter(RC::toVec2(m_centerPosition)).pos, kineticFunction);
+	//m_hintTextFont.drawKinetic(m_hintText, m_hintTextFont(m_hintText).regionCenter(RC::toVec2(m_centerPosition)).pos, kineticFunction);
 }

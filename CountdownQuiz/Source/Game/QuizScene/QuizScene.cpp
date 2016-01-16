@@ -1,11 +1,11 @@
 #include "QuizScene.h"
 
 
-QuizScene::QuizScene()
+QuizScene::QuizScene(const QuestionData& questionData)
 {
 	m_sceneChanger = std::make_shared<SubSceneManager>(QuizState::INTRO);
-	m_questionNumDrawer = std::make_shared<QuestionNumberDrawer>(m_sceneChanger, 1);
-	m_quizScene = std::make_shared<Quiz>(m_sceneChanger);
+	m_questionNumDrawer = std::make_shared<QuestionNumberDrawer>(m_sceneChanger, questionData.m_questionNumber);
+	m_quizScene = std::make_shared<Quiz>(m_sceneChanger, questionData);
 	m_correct = std::make_shared<Correct>(m_sceneChanger);
 	m_incorrect = std::make_shared<Incorrect>(m_sceneChanger);
 	m_timeup = std::make_shared<Timeup>(m_sceneChanger);

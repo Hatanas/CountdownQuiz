@@ -4,10 +4,11 @@
 const uint32 Quiz::m_LIMIT_TIME = 20000;
 
 
-Quiz::Quiz(std::shared_ptr<SubSceneManager> sceneChanger)
+Quiz::Quiz(std::shared_ptr<SubSceneManager> sceneChanger, const QuestionData& questionData)
 	: m_sceneChanger(sceneChanger)
 	, m_countdown(m_LIMIT_TIME)
 	, m_HINT_POSITIONS(4)
+	, m_questionData(questionData)
 {
 	m_HINT_POSITIONS[0] = {17.0, 85.0};
 	m_HINT_POSITIONS[1] = {39.0, 85.0};
@@ -28,10 +29,10 @@ void Quiz::init()
 	Shuffle(m_HINT_POSITIONS);
 
 	m_answer = {
-		AnswerButton(L"‘I‘ðŽˆ1", false, m_HINT_POSITIONS[0]),
-		AnswerButton(L"‘I‘ðŽˆ2", true,  m_HINT_POSITIONS[1]),
-		AnswerButton(L"‘I‘ðŽˆ3", false, m_HINT_POSITIONS[2]),
-		AnswerButton(L"‘I‘ðŽˆ4", false, m_HINT_POSITIONS[3])
+		AnswerButton(m_questionData.m_correctAnswer, true,  m_HINT_POSITIONS[0]),
+		AnswerButton(m_questionData.m_incorrectAnswers[0], false, m_HINT_POSITIONS[1]),
+		AnswerButton(m_questionData.m_incorrectAnswers[1], false, m_HINT_POSITIONS[2]),
+		AnswerButton(m_questionData.m_incorrectAnswers[2], false, m_HINT_POSITIONS[3])
 	};
 }
 
@@ -74,13 +75,13 @@ void Quiz::draw() const
 void Quiz::manageHint(const uint32 elapsedTime)
 {
 	if(m_timer.onTriggered(L"FirstHint")) {
-		m_hints.push_back(HintDrawer(L"ƒqƒ“ƒg1‚Ð‚ñ‚Æ1Hint1", 27.0));
+		m_hints.push_back(HintDrawer(m_questionData.m_hints[0], 27.0));
 	} else if(m_timer.onTriggered(L"SecondHint")) {
-		m_hints.push_back(HintDrawer(L"ƒqƒ“ƒg2‚Ð‚ñ‚Æ2Hint2", 39.0));
+		m_hints.push_back(HintDrawer(m_questionData.m_hints[1], 39.0));
 	} else if(m_timer.onTriggered(L"ThirdHint")) {
-		m_hints.push_back(HintDrawer(L"ƒqƒ“ƒg3‚Ð‚ñ‚Æ3Hint3", 51.0));
+		m_hints.push_back(HintDrawer(m_questionData.m_hints[2], 51.0));
 	} else if(m_timer.onTriggered(L"LastHint")) {
-		m_hints.push_back(HintDrawer(L"ƒqƒ“ƒg4‚Ð‚ñ‚Æ4Hint4", 63.0));
+		m_hints.push_back(HintDrawer(m_questionData.m_hints[3], 63.0));
 	} else if(elapsedTime > m_LIMIT_TIME) {
 		m_timer.pause();
 		m_sceneChanger->reserveNextScene(QuizState::TIMEUP);

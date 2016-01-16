@@ -12,7 +12,9 @@ class Commentary : public SubScene
 private:
 	std::shared_ptr<SubSceneManager> m_sceneChanger;
 	EasingController<double> m_easingBackground;
+	EasingController<double> m_easingFadeOut;
 	double m_backgroundAlpha;
+	double m_fadeOutAlpha;
 	CommentaryButton m_button;
 public:
 	Commentary(std::shared_ptr<SubSceneManager> sceneChanger);

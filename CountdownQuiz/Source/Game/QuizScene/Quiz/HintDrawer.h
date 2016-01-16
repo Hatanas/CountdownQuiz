@@ -22,7 +22,7 @@ public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	/// <param name="hint"> ヒントのテキスト </param>
+	/// <param name="hintText"> ヒントのテキスト </param>
 	/// <param name="positionY"> y座標値(%) </param>
 	HintDrawer(String hintText, double positionY);
 	~HintDrawer() = default;
